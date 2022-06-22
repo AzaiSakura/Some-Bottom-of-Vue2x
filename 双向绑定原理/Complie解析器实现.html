@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{obj.name}}--{{obj.age}}</h2>
+        <h2>{{obj.age}}</h2>
+        <h3 v-text='obj.name'></h3>
+        <h4 v-text='msg'></h4>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <h3>{{msg}}</h3>
+        <div v-html='htmlStr'></div>
+        <div v-html='obj.fav'></div>
+        <input type="text" v-model='msg'>
+        <button v-on:click='handlerClick'>按钮1</button>
+        <button v-on:click='handlerClick2'>按钮2</button>
+        <button @click='handlerClick2'>按钮3</button>
+
+    </div>
+    <script src="./Observer.js"></script>
+    <script src="./MyVue.js"></script>
+    <script>
+        let vm = new MyVue({
+            el:'#app',
+            data(){
+                return {
+                    obj:{
+                        name:'张三',
+                        age:'18',
+                        hobby:'起飞',
+                        fav:'<p>ssss<p>',
+                    },
+                    htmlStr:'aaaaa',
+                    msg:'<p>MVVM实现原理<p>',
+                   
+                }
+            },
+            methods:{
+                handlerClick(){
+                    alert(1);
+                    console.log(this);
+                },
+                handlerClick2(){
+                    console.log(this);
+                    alert(2);
+                }
+            }
+            
+        });
+    </script>
+</body>
+</html>
